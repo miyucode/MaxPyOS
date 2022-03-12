@@ -1,4 +1,4 @@
-from UI.Menu import Menu
+from UI.Menu.menu import Home
 
 from tkinter import *
 from tkinter.ttk import *
@@ -24,6 +24,7 @@ def login():
 			if contentofinput == Password:
 				Login.destroy()
 				print(f"[{strftime('%H:%M:%S')}]: Login has been done with success.")
+				Home()
 			else:
 				mb.showerror("MaxPyOS","Incorrect Password !")
 				Login.deiconify()
