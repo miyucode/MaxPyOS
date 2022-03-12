@@ -26,13 +26,11 @@ def Home():
                 password.write(newPassword)
                 password.close()
 
-                mb.showinfo("MaxPyOS - Change password","Password has been changed with success.")
-
                 Settings()
 
             def cancelChangePassword():
                 changePasswordWindow.destroy()
-                settings.deiconify()
+                Settings()
 
             settings.destroy()
             changePasswordWindow = Toplevel()
@@ -47,7 +45,7 @@ def Home():
             output_iconpassword.image = iconpassword
             output_iconpassword.place(relx=0.25, rely=0.15, anchor=CENTER)
 
-            currentpassword = Label(changePasswordWindow, text=f"Current password: {output_password}", font=("Arial", 12))
+            currentpassword = Label(changePasswordWindow, text=f"Current password: ****", font=("Arial", 12))
             currentpassword.place(relx=0.33, rely=0.14)
             Label(changePasswordWindow, text=f"New password:", font=("Arial", 12)).place(relx=0.35, rely=0.24)
             passwordinput = Entry(changePasswordWindow, font=("Arial", 12))
