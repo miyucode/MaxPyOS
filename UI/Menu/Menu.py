@@ -26,6 +26,7 @@ def Home():
                 password.write(newPassword)
                 password.close()
 
+                mb.showinfo("MaxPyOS - Change password","Password has been changed with success.")
                 Settings()
 
             def cancelChangePassword():
@@ -70,24 +71,84 @@ def Home():
         securityframe = Frame(menu1, width=600, height=500)
         securityframe.pack(fill='both', expand=True)
 
+        personalisationframe = Frame(menu1, width=600, height=500)
+        personalisationframe.pack(fill='both', expand=True)
+
         menu1.add(securityframe, text='Security')
+        menu1.add(personalisationframe, text='Personalization')
+
+        # Change password
 
         iconpassword = PhotoImage(file="UI/Login/icons/passwordicon.png")
         output_iconpassword = Label(securityframe, image=iconpassword)
         output_iconpassword.image = iconpassword
         output_iconpassword.place(relx=0.35, rely=0.15, anchor=CENTER)
 
-        Label(securityframe, text="Security", font=("Arial", 20)).place(relx=0.01, rely=0.02)
+        iconsecurity = PhotoImage(file="UI/Menu/icons/security-icon.png")
+        output_iconsecurity = Label(securityframe, image=iconsecurity)
+        output_iconsecurity.image = iconsecurity
+        output_iconsecurity.place(relx=0.05, rely=0.05, anchor=CENTER)
+        Label(securityframe, text="Security", font=("Arial", 20)).place(relx=0.10, rely=0.02)
 
         Label(securityframe, text=f"Current password: {output_password}", font=("Arial", 12)).place(relx=0.39, rely=0.14)        
         Button(securityframe, text="Change password", command=changePassword).place(relx=0.43, rely=0.21)
 
+        # Personalization
+
+        iconbackground = PhotoImage(file="UI/Menu/icons/background-icon.png")
+        output_iconbackground = Label(personalisationframe, image=iconbackground)
+        output_iconbackground.image = iconbackground
+        output_iconbackground.place(relx=0.08, rely=0.08, anchor=CENTER)
+        Label(personalisationframe, text="Personalization", font=("Arial", 20)).place(relx=0.14, rely=0.06)
+
+        def changeColor(*args):
+            fileColor = open("System/Ressources/background.txt", 'w')
+            newColor = backgroundVar.get()
+            if newColor == "Red":
+                home.config(bg="red")
+                fileColor.write("Red")
+            elif newColor == "White":
+                home.config(bg="white")
+                fileColor.write("White")
+            elif newColor == "Grey":
+                home.config(bg="grey")
+                fileColor.write("Grey")
+            fileColor.close()
+
+        fileColor = open("System/Ressources/background.txt", 'r')
+        currentColor = fileColor.readlines()
+        fileColor.close()
+
+        backgroundVar = StringVar(personalisationframe)
+        backgroundVar.set(f"{currentColor}") # default value
+
+        colors = ("Red", "White", "Grey")
+
+        Label(personalisationframe, text="Color:", font=("Arial", 15)).place(relx=0.45, rely=0.20)
+
+        choiceColor = OptionMenu(personalisationframe, backgroundVar, colors[1], *colors, command=changeColor)
+        choiceColor.place(relx=0.45, rely=0.27)
 
     home = Tk()
     home.title("MaxPyOS - Home")
     home.geometry("720x450")
     home.resizable(False, False)
     home.iconbitmap("UI/Menu/icons/logo.ico")
+
+    fileColor = open("System/Ressources/background.txt", 'r')
+    currentColor = fileColor.read()
+    fileColor.close()
+
+    if currentColor == "Default":
+        pass
+    elif currentColor == "Red":
+        home.config(bg="red")
+    elif currentColor == "Grey":
+        home.config(bg="grey")
+    elif currentColor == "White":
+        home.config(bg="white")
+    else:
+        pass
 
     def menu():
         def disconnectaccount():
@@ -144,6 +205,17 @@ def Home():
         output_icondisconnect.image = icondisconnect
         output_icondisconnect.place(relx=0.32, rely=0.55, anchor=CENTER)
         Button(menu, text="Disconnect", command=disconnectaccount).place(relx=0.40, rely=0.53)
+
+        if currentColor == "Default":
+            pass
+        elif currentColor == "Red":
+            menu.config(bg="red")
+        elif currentColor == "Grey":
+            menu.config(bg="grey")
+        elif currentColor == "White":
+            menu.config(bg="white")
+        else:
+            pass
 
     iconlogotaskbar = PhotoImage(file="UI/Menu/icons/logo-png.png")
     output_iconlogotaskbar = Button(home, image=iconlogotaskbar, command=menu)
