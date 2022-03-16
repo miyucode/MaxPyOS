@@ -11,8 +11,12 @@ from tkinter import ttk
 from time import strftime
 
 import tkinter.messagebox as mb
+import tkinter as tk
 
 def Home():
+    def MoreApps():
+        l = 0
+
     def Notepad():
         notepad()
 
@@ -118,16 +122,19 @@ def Home():
             elif newColor == "Grey":
                 home.config(bg="grey")
                 fileColor.write("Grey")
+            elif newColor == "Default":
+                home.configure(background='SystemButtonFace')
+                fileColor.write("Default")
             fileColor.close()
 
         fileColor = open("System/Ressources/background.txt", 'r')
-        currentColor = fileColor.readlines()
+        currentColor = fileColor.read()
         fileColor.close()
 
         backgroundVar = StringVar(personalisationframe)
         backgroundVar.set(f"{currentColor}") # default value
 
-        colors = ("Red", "White", "Grey")
+        colors = ("Default", "Red", "White", "Grey")
 
         Label(personalisationframe, text="Color:", font=("Arial", 15)).place(relx=0.45, rely=0.20)
 
@@ -145,7 +152,7 @@ def Home():
     fileColor.close()
 
     if currentColor == "Default":
-        pass
+        home.config(bg="")
     elif currentColor == "Red":
         home.config(bg="red")
     elif currentColor == "Grey":
@@ -199,7 +206,7 @@ def Home():
         fileColor.close()
 
         if currentColor == "Default":
-            pass
+            menu.config(bg="")
         elif currentColor == "Red":
             menu.config(bg="red")
         elif currentColor == "Grey":
@@ -227,6 +234,9 @@ def Home():
         output_icondisconnect.place(relx=0.32, rely=0.55, anchor=CENTER)
         Button(menu, text="Disconnect", command=disconnectaccount).place(relx=0.40, rely=0.53)
 
+    test = tk.Frame(home, bg="red")
+    test.pack()
+
     iconlogotaskbar = PhotoImage(file="UI/Menu/icons/logo-png.png")
     output_iconlogotaskbar = Button(home, image=iconlogotaskbar, command=menu)
     output_iconlogotaskbar.image = iconlogotaskbar
@@ -240,4 +250,9 @@ def Home():
     iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
     output_iconnotepad = Button(home, text="Settings",image=iconnotepad, command=Notepad)
     output_iconnotepad.image = iconnotepad
-    output_iconnotepad.place(relx=0.15, rely=0.90, anchor=CENTER)
+    output_iconnotepad.place(relx=0.25, rely=0.90, anchor=CENTER)
+
+    iconmenucircled = PhotoImage(file="UI/Menu/icons/menucircled-icon.png")
+    output_iconmenucircled = Button(home, text="Settings",image=iconmenucircled, command=MoreApps)
+    output_iconmenucircled.image = iconmenucircled
+    output_iconmenucircled.place(relx=0.50, rely=0.90, anchor=CENTER)

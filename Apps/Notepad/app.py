@@ -52,7 +52,8 @@ def notepad():
 
 	root = Tk()
 	root.wm_title("Notepad - Blank")
-	root.geometry("800x500")
+	root.geometry("400x400")
+	root.resizable(False, False)
 	root.iconbitmap("Apps/Notepad/icons/notepad-icon.ico")
 	editor = ScrolledText(root, wrap=WORD, undo=True)
 	editor.pack(fill=BOTH, expand=True)
