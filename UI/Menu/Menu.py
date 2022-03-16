@@ -2,6 +2,8 @@ from System.Shutdown import Shutdown
 from System.Restart import Restart
 from UI.Login import Login
 
+from Apps.Notepad.app import notepad
+
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import ttk
@@ -11,6 +13,9 @@ from time import strftime
 import tkinter.messagebox as mb
 
 def Home():
+    def Notepad():
+        notepad()
+
     def Settings():
 
         password = open('System/Ressources/password.txt', 'r')
@@ -188,6 +193,22 @@ def Home():
         menu.iconbitmap("UI/Menu/icons/logo.ico")
         menu.resizable(False, False)
         menu.protocol("WM_DELETE_WINDOW", lambda: closemenu())
+
+        fileColor = open("System/Ressources/background.txt", 'r')
+        currentColor = fileColor.read()
+        fileColor.close()
+
+        if currentColor == "Default":
+            pass
+        elif currentColor == "Red":
+            menu.config(bg="red")
+        elif currentColor == "Grey":
+            menu.config(bg="grey")
+        elif currentColor == "White":
+            menu.config(bg="white")
+        else:
+            pass
+
         iconshutdown = PhotoImage(file="UI/Menu/icons/shutdown-icon.png")
         output_iconshutdown = Label(menu, image=iconshutdown)
         output_iconshutdown.image = iconshutdown
@@ -206,17 +227,6 @@ def Home():
         output_icondisconnect.place(relx=0.32, rely=0.55, anchor=CENTER)
         Button(menu, text="Disconnect", command=disconnectaccount).place(relx=0.40, rely=0.53)
 
-        if currentColor == "Default":
-            pass
-        elif currentColor == "Red":
-            menu.config(bg="red")
-        elif currentColor == "Grey":
-            menu.config(bg="grey")
-        elif currentColor == "White":
-            menu.config(bg="white")
-        else:
-            pass
-
     iconlogotaskbar = PhotoImage(file="UI/Menu/icons/logo-png.png")
     output_iconlogotaskbar = Button(home, image=iconlogotaskbar, command=menu)
     output_iconlogotaskbar.image = iconlogotaskbar
@@ -226,3 +236,8 @@ def Home():
     output_iconoptions = Button(home, text="Settings",image=iconoptions, command=Settings)
     output_iconoptions.image = iconoptions
     output_iconoptions.place(relx=0.15, rely=0.90, anchor=CENTER)
+
+    iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
+    output_iconnotepad = Button(home, text="Settings",image=iconnotepad, command=Notepad)
+    output_iconnotepad.image = iconnotepad
+    output_iconnotepad.place(relx=0.15, rely=0.90, anchor=CENTER)
