@@ -1,17 +1,15 @@
 from System.Shutdown import Shutdown
 from System.Restart import Restart
+
 from UI.Login import Login
 
 from Apps.Notepad.app import notepad
 
 from tkinter import *
-from tkinter.ttk import *
-from tkinter import ttk
 
 from time import strftime
 
 import tkinter.messagebox as mb
-import tkinter as tk
 
 def Home():
     def MoreApps():
@@ -233,8 +231,6 @@ def Home():
         output_icondisconnect.image = icondisconnect
         output_icondisconnect.place(relx=0.32, rely=0.55, anchor=CENTER)
         Button(menu, text="Disconnect", command=disconnectaccount).place(relx=0.40, rely=0.53)
-
-    
 
     iconlogotaskbar = PhotoImage(file="UI/Menu/icons/logo-png.png")
     output_iconlogotaskbar = Button(home, image=iconlogotaskbar, command=menu)
