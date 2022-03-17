@@ -234,8 +234,7 @@ def Home():
         output_icondisconnect.place(relx=0.32, rely=0.55, anchor=CENTER)
         Button(menu, text="Disconnect", command=disconnectaccount).place(relx=0.40, rely=0.53)
 
-    test = tk.Frame(home, bg="red")
-    test.pack()
+    
 
     iconlogotaskbar = PhotoImage(file="UI/Menu/icons/logo-png.png")
     output_iconlogotaskbar = Button(home, image=iconlogotaskbar, command=menu)
