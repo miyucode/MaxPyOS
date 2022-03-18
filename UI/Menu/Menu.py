@@ -6,6 +6,8 @@ from UI.Login import Login
 from Apps.Notepad.app import notepad
 
 from tkinter import *
+from tkinter import ttk
+from tkinter.ttk import *
 
 from time import strftime
 
@@ -13,7 +15,29 @@ import tkinter.messagebox as mb
 
 def Home():
     def MoreApps():
-        l = 0
+        def openNotepadViaMoreApps():
+            moreapps.destroy()
+            notepad()
+
+        def openSettingsViaMoreApps():
+            moreapps.destroy()
+            Settings()
+
+        moreapps = Toplevel()
+        moreapps.title("MaxPyOS - Apps")
+        moreapps.geometry("600x500")
+        moreapps.resizable(False, False)
+        moreapps.iconbitmap("UI/Menu/icons/menucircled-icon.ico")
+
+        iconoptions = PhotoImage(file="UI/Menu/icons/options-icon.png")
+        output_iconoptions = Button(moreapps, text="Settings",image=iconoptions, command=openSettingsViaMoreApps)
+        output_iconoptions.image = iconoptions
+        output_iconoptions.place(relx=0.15, rely=0.15, anchor=CENTER)
+
+        iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
+        output_iconnotepad = Button(moreapps, text="Settings",image=iconnotepad, command=openNotepadViaMoreApps)
+        output_iconnotepad.image = iconnotepad
+        output_iconnotepad.place(relx=0.30, rely=0.15, anchor=CENTER)
 
     def Notepad():
         notepad()
