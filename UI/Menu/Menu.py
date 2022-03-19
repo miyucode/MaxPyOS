@@ -4,6 +4,7 @@ from System.Restart import Restart
 from UI.Login import Login
 
 from Apps.Notepad.app import notepad
+from Apps.WeatherApp.app import weatherapp
 
 from tkinter import *
 from tkinter import ttk
@@ -23,6 +24,10 @@ def Home():
             moreapps.destroy()
             Settings()
 
+        def openWeatherAppViaMoreApps():
+            moreapps.destroy()
+            weatherapp()
+
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
         moreapps.geometry("600x500")
@@ -33,11 +38,19 @@ def Home():
         output_iconoptions = Button(moreapps, text="Settings",image=iconoptions, command=openSettingsViaMoreApps)
         output_iconoptions.image = iconoptions
         output_iconoptions.place(relx=0.15, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Options", font=("Arial", 10)).place(relx=0.11, rely=0.22)
 
         iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
-        output_iconnotepad = Button(moreapps, text="Settings",image=iconnotepad, command=openNotepadViaMoreApps)
+        output_iconnotepad = Button(moreapps, text="Notepad",image=iconnotepad, command=openNotepadViaMoreApps)
         output_iconnotepad.image = iconnotepad
         output_iconnotepad.place(relx=0.30, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Notepad", font=("Arial", 10)).place(relx=0.25, rely=0.22)
+
+        iconweatherapp = PhotoImage(file="UI/Menu/icons/weatherapp-icon.png")
+        output_iconweatherapp = Button(moreapps, text="WeatherApp",image=iconweatherapp, command=openWeatherAppViaMoreApps)
+        output_iconweatherapp.image = iconweatherapp
+        output_iconweatherapp.place(relx=0.45, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Weather App", font=("Arial", 10)).place(relx=0.39, rely=0.22)
 
     def Notepad():
         notepad()
