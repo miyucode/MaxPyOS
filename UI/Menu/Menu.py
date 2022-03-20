@@ -44,7 +44,7 @@ def Home():
         output_iconnotepad = Button(moreapps, text="Notepad",image=iconnotepad, command=openNotepadViaMoreApps)
         output_iconnotepad.image = iconnotepad
         output_iconnotepad.place(relx=0.30, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="Notepad", font=("Arial", 10)).place(relx=0.25, rely=0.22)
+        Label(moreapps, text="Notepad", font=("Arial", 10)).place(relx=0.26, rely=0.22)
 
         iconweatherapp = PhotoImage(file="UI/Menu/icons/weatherapp-icon.png")
         output_iconweatherapp = Button(moreapps, text="WeatherApp",image=iconweatherapp, command=openWeatherAppViaMoreApps)
