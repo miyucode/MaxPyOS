@@ -29,20 +29,10 @@ def notepad():
 				setfilepath(path)
 				root.wm_title("Notepad - " + filepath)
 
-	def savefile():
-		if filepath == "":
-			mb.showerror("Notepad","Vous n'avez aucun nom à votre fichier texte !")
-		else:
-			with open(filepath, 'w') as f:
-				code = editor.get('1.0', END)
-				f.write(code)
-				setfilepath(filepath)
-				root.wm_title("Notepad - " + filepath)
-
 	def saveasfile():
 		path = fd.asksaveasfilename()
 		if path == "":
-			mb.showerror("Notepad","Vous n'avez aucun nom à votre fichier texte !")
+			mb.showerror("Notepad","Vous n'avez donné aucun nom à votre fichier texte !")
 		else:
 			with open(path, 'w') as f:
 				code = editor.get('1.0', END)
@@ -60,7 +50,6 @@ def notepad():
 	menubar = Menu(root)
 	fileMenu = Menu(menubar, tearoff=0)
 	fileMenu.add_command(label="Open", command=openfile)
-	fileMenu.add_command(label="Save", command=savefile, accelerator="Ctrl+S")
 	fileMenu.add_command(label="Save As", command=saveasfile)
 	fileMenu.add_separator()
 	fileMenu.add_command(label="Close", command=root.destroy)
