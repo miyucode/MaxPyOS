@@ -187,7 +187,7 @@ def Home():
     fileColor.close()
 
     if currentColor == "Default":
-        home.config(bg="")
+        home.configure(background='SystemButtonFace')
     elif currentColor == "Red":
         home.config(bg="red")
     elif currentColor == "Grey":
