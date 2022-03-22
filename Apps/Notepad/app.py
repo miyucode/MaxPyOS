@@ -13,6 +13,12 @@ import sys
 def notepad():
 	filepath = ""
 
+	def redo():
+		try:
+			editor.edit_redo()
+		except:
+			mb.showerror("Notepad - Error","There is nothing to redo !")
+
 	def setfilepath(path):
 		global filepath
 		filepath = path
@@ -59,7 +65,7 @@ def notepad():
 	editMenu.add_command(label="Paste", accelerator="Ctrl+V", command=lambda: editor.event_generate('<<Paste>>'))
 	editMenu.add_separator()
 	editMenu.add_command(label="Undo", accelerator="Ctrl+Z", command=editor.edit_undo)
-	editMenu.add_command(label="Redo", accelerator="Ctrl+Shift+Z", command=editor.edit_redo)
+	editMenu.add_command(label="Redo", accelerator="Ctrl+Shift+Z", command=redo)
 	menubar.add_cascade(label="File", menu=fileMenu)
 	menubar.add_cascade(label="Edit", menu=editMenu)
 	root.config(menu=menubar)
