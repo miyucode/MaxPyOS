@@ -242,7 +242,7 @@ def Home():
         fileColor.close()
 
         if currentColor == "Default":
-            menu.config(bg="")
+            menu.configure(background='SystemButtonFace')
         elif currentColor == "Red":
             menu.config(bg="red")
         elif currentColor == "Grey":
