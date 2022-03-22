@@ -6,6 +6,7 @@ from UI.Login import Login
 
 from Apps.Notepad.app import notepad
 from Apps.WeatherApp.app import weatherapp
+from Apps.FileExplorer.app import fileexplorer
 
 from tkinter import *
 from tkinter import ttk
@@ -17,6 +18,10 @@ import tkinter.messagebox as mb
 
 def Home():
     def MoreApps():
+        def openFileExplorerViaMoreApps():
+            moreapps.destroy()
+            fileexplorer()
+
         def openNotepadViaMoreApps():
             moreapps.destroy()
             notepad()
@@ -41,17 +46,23 @@ def Home():
         output_iconoptions.place(relx=0.15, rely=0.15, anchor=CENTER)
         Label(moreapps, text="Options", font=("Arial", 10)).place(relx=0.11, rely=0.22)
 
+        iconfileexplorer = PhotoImage(file="UI/Menu/icons/fileexplorer-icon.png")
+        output_iconfileexplorer = Button(moreapps, text="FileExplorer",image=iconfileexplorer, command=openFileExplorerViaMoreApps)
+        output_iconfileexplorer.image = iconfileexplorer
+        output_iconfileexplorer.place(relx=0.30, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="File Explorer", font=("Arial", 10)).place(relx=0.24, rely=0.22)
+
         iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
         output_iconnotepad = Button(moreapps, text="Notepad",image=iconnotepad, command=openNotepadViaMoreApps)
         output_iconnotepad.image = iconnotepad
-        output_iconnotepad.place(relx=0.30, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="Notepad", font=("Arial", 10)).place(relx=0.26, rely=0.22)
+        output_iconnotepad.place(relx=0.45, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Notepad", font=("Arial", 10)).place(relx=0.405, rely=0.22)
 
         iconweatherapp = PhotoImage(file="UI/Menu/icons/weatherapp-icon.png")
         output_iconweatherapp = Button(moreapps, text="WeatherApp",image=iconweatherapp, command=openWeatherAppViaMoreApps)
         output_iconweatherapp.image = iconweatherapp
-        output_iconweatherapp.place(relx=0.45, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="Weather App", font=("Arial", 10)).place(relx=0.39, rely=0.22)
+        output_iconweatherapp.place(relx=0.60, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Weather App", font=("Arial", 10)).place(relx=0.53, rely=0.22)
 
     def Notepad():
         notepad()
@@ -143,7 +154,7 @@ def Home():
         iconbackground = PhotoImage(file="UI/Menu/icons/background-icon.png")
         output_iconbackground = Label(personalisationframe, image=iconbackground)
         output_iconbackground.image = iconbackground
-        output_iconbackground.place(relx=0.08, rely=0.08, anchor=CENTER)
+        output_iconbackground.place(relx=0.08, rely=0.09, anchor=CENTER)
         Label(personalisationframe, text="Personalization", font=("Arial", 20)).place(relx=0.14, rely=0.06)
 
         def changeColor(*args):
@@ -177,11 +188,21 @@ def Home():
         choiceColor = OptionMenu(personalisationframe, backgroundVar, colors[1], *colors, command=changeColor)
         choiceColor.place(relx=0.45, rely=0.27)
 
+    def shutdownmaxpyos():
+        home.withdraw()
+        asking = mb.askquestion('MaxPyOS - Shutdown', 'Are you sure to shutdown ?')
+        if asking == "yes":
+            home.destroy()
+            Shutdown.shutdown()
+        elif asking == "no":
+            home.deiconify()
+
     home = Tk()
     home.title("MaxPyOS - Home")
     home.geometry("720x450")
     home.resizable(False, False)
     home.iconbitmap("UI/Menu/icons/logo.ico")
+    home.protocol("WM_DELETE_WINDOW", lambda: shutdownmaxpyos())
 
     fileColor = open("System/Ressources/background.txt", 'r')
     currentColor = fileColor.read()
@@ -280,10 +301,10 @@ def Home():
     output_iconoptions.image = iconoptions
     output_iconoptions.place(relx=0.15, rely=0.90, anchor=CENTER)
 
-    iconnotepad = PhotoImage(file="UI/Menu/icons/notepad-icon.png")
-    output_iconnotepad = Button(home, text="Settings",image=iconnotepad, command=Notepad)
-    output_iconnotepad.image = iconnotepad
-    output_iconnotepad.place(relx=0.25, rely=0.90, anchor=CENTER)
+    iconfileexplorer = PhotoImage(file="UI/Menu/icons/fileexplorer-icon.png")
+    output_iconfileexplorer = Button(home, text="FileExplorer",image=iconfileexplorer, command=fileexplorer)
+    output_iconfileexplorer.image = iconfileexplorer
+    output_iconfileexplorer.place(relx=0.25, rely=0.90, anchor=CENTER)
 
     iconmenucircled = PhotoImage(file="UI/Menu/icons/menucircled-icon.png")
     output_iconmenucircled = Button(home, text="Settings",image=iconmenucircled, command=MoreApps)

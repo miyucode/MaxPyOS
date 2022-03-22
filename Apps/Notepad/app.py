@@ -13,6 +13,11 @@ import sys
 def notepad():
 	filepath = ""
 
+	def undo():
+		try:
+			editor.edit_undo()
+		except:
+			mb.showerror("Notepad - Error","There is nothing to undo !")
 	def redo():
 		try:
 			editor.edit_redo()
@@ -64,7 +69,7 @@ def notepad():
 	editMenu.add_command(label="Copy", accelerator="Ctrl+C", command=lambda: editor.event_generate('<<Copy>>'))
 	editMenu.add_command(label="Paste", accelerator="Ctrl+V", command=lambda: editor.event_generate('<<Paste>>'))
 	editMenu.add_separator()
-	editMenu.add_command(label="Undo", accelerator="Ctrl+Z", command=editor.edit_undo)
+	editMenu.add_command(label="Undo", accelerator="Ctrl+Z", command=undo)
 	editMenu.add_command(label="Redo", accelerator="Ctrl+Shift+Z", command=redo)
 	menubar.add_cascade(label="File", menu=fileMenu)
 	menubar.add_cascade(label="Edit", menu=editMenu)
