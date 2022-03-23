@@ -26,6 +26,8 @@ def weatherapp():
 					weatherapp.iconbitmap("Apps/WeatherApp/icons/clouds-icon.ico")
 				elif content == "Stormy":
 					weatherapp.iconbitmap("Apps/WeatherApp/icons/stormyrain-icon.ico")
+				elif content == "Haze":
+					weatherapp.iconbitmap("Apps/WeatherApp/icons/windy-icon.ico")
 				else:
 					pass
 
