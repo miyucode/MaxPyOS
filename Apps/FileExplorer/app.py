@@ -10,4 +10,5 @@ import platform
 import os
 import sys
 
-l = 0
+def fileexplorer():
+	l = 0
