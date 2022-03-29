@@ -130,8 +130,12 @@ def Home():
         personalisationframe = Frame(menu1, width=600, height=500)
         personalisationframe.pack(fill='both', expand=True)
 
+        systeminfoframe = Frame(menu1, width=600, height=500)
+        systeminfoframe.pack(fill='both', expand=True)
+
         menu1.add(securityframe, text='Security')
         menu1.add(personalisationframe, text='Personalization')
+        menu1.add(systeminfoframe, text="System info")
 
         # Change password
 
@@ -156,6 +160,14 @@ def Home():
         output_iconbackground.image = iconbackground
         output_iconbackground.place(relx=0.08, rely=0.09, anchor=CENTER)
         Label(personalisationframe, text="Personalization", font=("Arial", 20)).place(relx=0.14, rely=0.06)
+
+        # System info
+
+        iconsystem = PhotoImage(file="UI/Menu/icons/system-icon.png")
+        output_iconsystem = Label(systeminfoframe, image=iconsystem)
+        output_iconsystem.image = iconsystem
+        output_iconsystem.place(relx=0.40, rely=0.10, anchor=CENTER)
+        Label(systeminfoframe, text="Build: MaxPyOS 1.0", font=("Arial", 12)).place(relx=0.45, rely=0.08)
 
         def changeColor(*args):
             fileColor = open("System/Ressources/background.txt", 'w')
