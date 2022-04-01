@@ -24,7 +24,7 @@ def Home():
 
         def openNotepadViaMoreApps():
             moreapps.destroy()
-            notepad()
+            notepad("")
 
         def openSettingsViaMoreApps():
             moreapps.destroy()
