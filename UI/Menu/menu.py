@@ -15,6 +15,9 @@ from tkinter.ttk import *
 from time import strftime
 
 import tkinter.messagebox as mb
+from sys import platform
+
+windows = platform == "win32"
 
 def Home():
     def MoreApps():
@@ -38,7 +41,8 @@ def Home():
         moreapps.title("MaxPyOS - Apps")
         moreapps.geometry("600x500")
         moreapps.resizable(False, False)
-        moreapps.iconbitmap("UI/Menu/icons/menucircled-icon.ico")
+        if windows:
+            moreapps.iconbitmap("UI/Menu/icons/menucircled-icon.ico")
 
         iconoptions = PhotoImage(file="UI/Menu/icons/options-icon.png")
         output_iconoptions = Button(moreapps, text="Settings",image=iconoptions, command=openSettingsViaMoreApps)
@@ -94,7 +98,8 @@ def Home():
             changePasswordWindow.title("MaxPyOS - Change password")
             changePasswordWindow.geometry("350x300")
             changePasswordWindow.resizable(False, False)
-            changePasswordWindow.iconbitmap("UI/Menu/icons/options-icon.ico")
+            if windows:
+                changePasswordWindow.iconbitmap("UI/Menu/icons/options-icon.ico")
             changePasswordWindow.protocol("WM_DELETE_WINDOW", lambda: cancelChangePassword())
 
             iconpassword = PhotoImage(file="UI/Login/icons/passwordicon.png")
@@ -118,7 +123,8 @@ def Home():
         settings.title("MaxPyOS - Settings")
         settings.geometry("600x500")
         settings.resizable(False, False)
-        settings.iconbitmap("UI/Menu/icons/options-icon.ico")
+        if windows:
+            settings.iconbitmap("UI/Menu/icons/options-icon.ico")
         settings.protocol("WM_DELETE_WINDOW", lambda: closeSettings())
 
         menu1 = Notebook(settings)
@@ -182,7 +188,7 @@ def Home():
                 home.config(bg="grey")
                 fileColor.write("Grey")
             elif newColor == "Default":
-                home.configure(background='SystemButtonFace')
+                home.configure(background='lightgrey')
                 fileColor.write("Default")
             fileColor.close()
 
@@ -213,7 +219,8 @@ def Home():
     home.title("MaxPyOS - Home")
     home.geometry("720x450")
     home.resizable(False, False)
-    home.iconbitmap("UI/Menu/icons/logo.ico")
+    if windows:
+        home.iconbitmap("UI/Menu/icons/logo.ico")
     home.protocol("WM_DELETE_WINDOW", lambda: shutdownmaxpyos())
 
     fileColor = open("System/Ressources/background.txt", 'r')
@@ -221,7 +228,7 @@ def Home():
     fileColor.close()
 
     if currentColor == "Default":
-        home.configure(background='SystemButtonFace')
+        home.configure(background='lightgrey')
     elif currentColor == "Red":
         home.config(bg="red")
     elif currentColor == "Grey":
@@ -266,7 +273,8 @@ def Home():
         menu = Toplevel()
         menu.geometry("400x400")
         menu.title("MaxPyOS - Home")
-        menu.iconbitmap("UI/Menu/icons/logo.ico")
+        if windows:
+            menu.iconbitmap("UI/Menu/icons/logo.ico")
         menu.resizable(False, False)
         menu.protocol("WM_DELETE_WINDOW", lambda: closemenu())
 
@@ -275,7 +283,7 @@ def Home():
         fileColor.close()
 
         if currentColor == "Default":
-            menu.configure(background='SystemButtonFace')
+            menu.configure(background='lightgrey')
         elif currentColor == "Red":
             menu.config(bg="red")
         elif currentColor == "Grey":

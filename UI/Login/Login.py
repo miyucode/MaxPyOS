@@ -3,9 +3,10 @@ from UI.Menu.menu import Home
 from tkinter import *
 from tkinter.ttk import *
 from time import *
-from tkinter import ttk
-
 import tkinter.messagebox as mb
+from sys import platform
+
+windows = platform == "win32"
 
 def login():
 	def cancelLogin():
@@ -36,7 +37,8 @@ def login():
 	Login.title("MaxPyOS - Login")
 	Login.geometry("600x400")
 	Login.resizable(False, False)
-	Login.iconbitmap("UI/Login/icons/login.ico")
+	if windows:
+		Login.iconbitmap("UI/Login/icons/login.ico")
 	Login.protocol("WM_DELETE_WINDOW", lambda: cancelLogin())
 
 	iconusername = PhotoImage(file="UI/Login/icons/usericon.png")

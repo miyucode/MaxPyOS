@@ -11,13 +11,17 @@ import tkinter.messagebox as mb
 import platform
 import os
 import sys
+from sys import platform
+
+windows = platform == "win32"
 
 def fileexplorer():
 	app = Tk()
 	app.title("MaxPyOS - File Explorer")
 	app.geometry("800x500")
 	app.resizable(False, False)
-	app.iconbitmap("Apps/FileExplorer/icons/fileexplorer-icon.ico")
+	if windows:
+		app.iconbitmap("Apps/FileExplorer/icons/fileexplorer-icon.ico")
 
 	def newtextfile():
 		notepad("")
