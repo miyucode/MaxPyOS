@@ -9,6 +9,9 @@ import tkinter.messagebox as mb
 import platform
 import os
 import sys
+from sys import platform
+
+windows = platform == "win32"
 
 class openFile(object):
 	"""docstring for openFile"""
@@ -63,7 +66,8 @@ def notepad(path):
 		root.wm_title("Notepad - Blank")
 		root.geometry("400x400")
 		root.resizable(False, False)
-		root.iconbitmap("Apps/Notepad/icons/notepad-icon.ico")
+		if windows:
+			root.iconbitmap("Apps/Notepad/icons/notepad-icon.ico")
 		editor = ScrolledText(root, wrap=WORD, undo=True)
 		editor.pack(fill=BOTH, expand=True)
 		menubar = Menu(root)
@@ -129,7 +133,8 @@ def notepad(path):
 		root.wm_title(f"Notepad - {filepath}")
 		root.geometry("400x400")
 		root.resizable(False, False)
-		root.iconbitmap("Apps/Notepad/icons/notepad-icon.ico")
+		if windows:
+			root.iconbitmap("Apps/Notepad/icons/notepad-icon.ico")
 		editor = ScrolledText(root, wrap=WORD, undo=True)
 		editor.pack(fill=BOTH, expand=True)
 		file = open(f'{filepath}', 'r')
