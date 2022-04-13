@@ -41,7 +41,7 @@ def notepad(path):
 		def openfile():
 			path = fd.askopenfilename()
 			filepath = path
-			if path == "":
+			if filepath == "":
 				mb.showerror("Notepad","Error has been occured !")
 			else:
 				with open(path, 'r') as f:
@@ -53,6 +53,7 @@ def notepad(path):
 
 		def saveasfile():
 			path = fd.asksaveasfilename()
+			filepath = path
 			if path == "":
 				mb.showerror("Notepad","Error has been occured !")
 			else:
