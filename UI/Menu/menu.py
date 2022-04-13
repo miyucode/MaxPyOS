@@ -21,7 +21,6 @@ from sys import platform
 windows = platform == "win32"
 
 def Home():
-<<<<<<< HEAD
 	def MoreApps():
 		def openFileExplorerViaMoreApps():
 			moreapps.destroy()
@@ -383,7 +382,7 @@ def Home():
 	output_iconmenucircled = Button(home, text="Settings",image=iconmenucircled, command=MoreApps)
 	output_iconmenucircled.image = iconmenucircled
 	output_iconmenucircled.place(relx=0.50, rely=0.90, anchor=CENTER)
-=======
+
     def MoreApps():
         def openFileExplorerViaMoreApps():
             moreapps.destroy()
@@ -694,4 +693,3 @@ def Home():
     output_iconmenucircled = Button(home, text="Settings",image=iconmenucircled, command=MoreApps)
     output_iconmenucircled.image = iconmenucircled
     output_iconmenucircled.place(relx=0.50, rely=0.90, anchor=CENTER)
->>>>>>> 00aaa936b485f1d43125caf3f42b15d826a7241a
