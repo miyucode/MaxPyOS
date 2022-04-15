@@ -1,11 +1,11 @@
 from time import strftime
-import os
-import time
+
+start_command = None
+def configure_start_command(command):
+	global start_command
+	start_command = command
+
 
 def restart():
-	print(f"[{strftime('%H:%M:%S')}]: Restart...")
-	time.sleep(0.75)
-	path = "MaxPyOS.py"
-	os.system(f"{path}")
-	print(f"[{strftime('%H:%M:%S')}]: Restart effectued with success.")
-	print(f"[{strftime('%H:%M:%S')}]: Welcome back on MaxPyOS !")
+	print(f"[{strftime('%H:%M:%S')}]: Restarting...")
+	start_command()

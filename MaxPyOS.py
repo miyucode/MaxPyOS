@@ -1,5 +1,6 @@
 from System.Boot import Boot
 from UI.Login import Login
+from System.Restart.Restart import configure_start_command
 
 from sys import platform
 
@@ -13,4 +14,5 @@ def main():
 	Login.login()
 
 if __name__ == '__main__':
+	configure_start_command(main)
 	main()
