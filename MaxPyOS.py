@@ -10,7 +10,7 @@ def main():
 	if platform == "win32":
 		os.system("cls")
 	else:
-		l = 0
+		pass
 
 	Boot.Boot()
 	Login.login()
