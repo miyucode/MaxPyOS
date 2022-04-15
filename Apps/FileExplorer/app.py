@@ -73,7 +73,7 @@ def fileexplorer():
 
 	def list_files_in_folder():
 		i = 0
-		files = os.listdir("System/Users/Admin/Desktop/")
+		files = os.listdir("System/Users/User/Desktop/")
 		listbox = Listbox(app, selectbackground='SteelBlue', font=("Arial", 10))
 		listbox.place(relx=0, rely=0, relheight=1, relwidth=1)
 		scrollbar = Scrollbar(listbox, orient=VERTICAL, command=listbox.yview)
