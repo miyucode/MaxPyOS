@@ -1,7 +1,7 @@
 # MaxPyOS
 
 <br>
-<img src="UI/Menu/icons/logo-png.png"></img><h1>MaxPyOS</h1>
+<img src="UI/Menu/icons/logo-png.png"></img>
 <br>
 
 ## Installation
