@@ -259,10 +259,16 @@ def Home():
 
         colors = ("Default", "Red", "White", "Grey")
 
-        Label(personalisationframe, text="Color:", font=("Arial", 15)).place(relx=0.45, rely=0.20)
+        Label(personalisationframe, text="Color:", font=("Arial", 20)).place(relx=0.46, rely=0.20)
+
+        iconcolor = PhotoImage(file="UI/Menu/icons/color-icon.png")
+        output_iconcolor = Label(personalisationframe, image=iconcolor)
+        output_iconcolor.image = iconcolor
+        output_iconcolor.place(relx=0.412, rely=0.24, anchor=CENTER)
+
 
         choiceColor = OptionMenu(personalisationframe, backgroundVar, colors[1], *colors, command=changeColor)
-        choiceColor.place(relx=0.45, rely=0.27)
+        choiceColor.place(relx=0.46, rely=0.28)
 
     def shutdownmaxpyos():
         home.withdraw()
