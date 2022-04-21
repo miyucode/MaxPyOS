@@ -1,5 +1,9 @@
 # MaxPyOS
 
+<br>
+<img src="UI/Menu/icons/logo-png.png"></img>
+<br>
+
 ## Installation
 
 ⚠ *Note: Install the current version of Python to using MaxPyOS and install it.*
