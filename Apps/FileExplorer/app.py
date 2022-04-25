@@ -20,8 +20,7 @@ def fileexplorer():
 	app.title("MaxPyOS - File Explorer")
 	app.geometry("800x500")
 	app.resizable(False, False)
-	if windows:
-		app.iconbitmap("Apps/FileExplorer/icons/fileexplorer-icon.ico")
+	app.iconbitmap("Apps/FileExplorer/icons/fileexplorer-icon.ico")
 
 	def newtextfile():
 		notepad("")
