@@ -10,7 +10,6 @@ from Apps.FileExplorer.app import fileexplorer
 from Apps.MusicPlayer.app import musicplayer
 
 from tkinter import *
-from tkinter import ttk
 from tkinter.ttk import *
 
 from time import strftime
@@ -256,7 +255,7 @@ def Home():
                 home.config(bg="grey")
                 fileColor.write("Grey")
             elif newColor == "Default":
-                home.configure(background='lightgrey')
+                home.configure(background='SystemButtonFace')
                 fileColor.write("Default")
             fileColor.close()
 
@@ -301,7 +300,7 @@ def Home():
     fileColor.close()
 
     if currentColor == "Default":
-        home.configure(background='lightgrey')
+        home.configure(background='SystemButtonFace')
     elif currentColor == "Red":
         home.config(bg="red")
     elif currentColor == "Grey":
@@ -355,7 +354,7 @@ def Home():
         fileColor.close()
 
         if currentColor == "Default":
-            menu.configure(background='lightgrey')
+            menu.configure(background='SystemButtonFace')
         elif currentColor == "Red":
             menu.config(bg="red")
         elif currentColor == "Grey":
