@@ -264,9 +264,9 @@ def Home():
         fileColor.close()
 
         backgroundVar = StringVar(personalisationframe)
-        backgroundVar.set(f"{currentColor}") # default value
+        backgroundVar.set(f"Default") # default value
 
-        colors = ("Default", "Red", "White", "Grey")
+        colors = ("Red", "Default", "White", "Grey")
 
         Label(personalisationframe, text="Color:", font=("Arial", 20)).place(relx=0.46, rely=0.20)
 
