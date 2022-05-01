@@ -6,12 +6,7 @@ from tkinter.scrolledtext import ScrolledText
 import tkinter.filedialog as fd
 import tkinter.messagebox as mb
 
-import platform
 import os
-import sys
-from sys import platform
-
-windows = platform == "win32"
 
 class openFile(object):
 	"""docstring for openFile"""
