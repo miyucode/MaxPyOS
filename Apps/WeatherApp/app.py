@@ -56,7 +56,7 @@ def weatherapp():
 				humidity = json_data['main']['humidity']
 				wind = json_data['wind']['speed']
 				final_info = condition + "\n" + str(temp) + "°C"
-				final_data = "\n" + "Minimal temperature: " + str(min_temp) + "°C" + "\n" + "Maximal temperature: " + str(max_temp) + "°C" + "\n" + "Pression: " + str(pressure) + "\n" + "Humidity: " + str(humidity) + "\n"
+				final_data = "\n" + "Minimal temperature: " + str(min_temp) + "°C" + "\n" + "Maximal temperature: " + str(max_temp) + "°C" + "\n" + "Humidity: " + str(humidity) + "\n"
 				
 				readintoweatherconditionfile()
 				
