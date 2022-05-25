@@ -7,10 +7,7 @@ from sys import platform
 import os
 
 def main():
-	if platform == "win32":
-		os.system("cls")
-	else:
-		pass
+	os.system('cls')
 
 	Boot.Boot()
 	Login.login()
