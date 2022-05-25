@@ -6,6 +6,8 @@ import tkinter.messagebox as mb
 
 import sys, os, requests
 
+
+
 def weatherapp():
 	def closeweatherapp():
 		file = open('Apps/WeatherApp/src/weather-condition.txt', 'w')
@@ -28,6 +30,8 @@ def weatherapp():
 					weatherapp.iconbitmap("Apps/WeatherApp/icons/stormyrain-icon.ico")
 				elif content == "Haze":
 					weatherapp.iconbitmap("Apps/WeatherApp/icons/windy-icon.ico")
+				elif content == "Mist":
+					weatherapp.iconbitmap("Apps/WeatherApp/icons/haze-icon.ico")
 				else:
 					pass
 
