@@ -1,8 +1,4 @@
-# MaxPyOS
-
-<br>
-<img src="UI/Menu/icons/logo-png.png"></img>
-<br>
+![a](https://user-images.githubusercontent.com/75862582/167246478-8e57b299-efab-4dd8-8d02-e3f18b729f20.png)
 
 ## Installation
 
