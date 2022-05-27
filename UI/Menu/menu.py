@@ -8,6 +8,7 @@ from Apps.Notepad.app import notepad
 from Apps.WeatherApp.app import weatherapp
 from Apps.FileExplorer.app import fileexplorer
 from Apps.MusicPlayer.app import musicplayer
+from Apps.MapsApp.app import mapsapp
 
 from tkinter import *
 from tkinter.ttk import *
@@ -39,6 +40,10 @@ def Home():
             moreapps.destroy()
             weatherapp()
 
+        def openMapsAppViaMoreApps():
+            moreapps.destroy()
+            mapsapp()
+
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
         moreapps.geometry("600x500")
@@ -68,6 +73,12 @@ def Home():
         output_iconweatherapp.image = iconweatherapp
         output_iconweatherapp.place(relx=0.60, rely=0.15, anchor=CENTER)
         Label(moreapps, text="Weather App", font=("Arial", 10)).place(relx=0.53, rely=0.22)
+
+        iconmapsapp = PhotoImage(file="UI/Menu/icons/maps-icon2.png")
+        output_iconmapsapp = Button(moreapps, text="MapsApp", image=iconmapsapp, command=openMapsAppViaMoreApps)
+        output_iconmapsapp.image = iconmapsapp
+        output_iconmapsapp.place(relx=0.75, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="MapsApp", font=("Arial", 10)).place(relx=0.70, rely=0.22)
 
     def Notepad():
         notepad()
