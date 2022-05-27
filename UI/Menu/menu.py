@@ -8,19 +8,14 @@ from Apps.Notepad.app import notepad
 from Apps.WeatherApp.app import weatherapp
 from Apps.FileExplorer.app import fileexplorer
 from Apps.MusicPlayer.app import musicplayer
-from Apps.MapsApp.app import mapsapp
+from Apps.CalendarApp.app import calendarapp
 
 from tkinter import *
 from tkinter.ttk import *
 
 from time import strftime
 
-from sys import platform
-import platform
-
 import tkinter.messagebox as mb
-
-windows = platform == "win32"
 
 def Home():
     def MoreApps():
@@ -40,9 +35,9 @@ def Home():
             moreapps.destroy()
             weatherapp()
 
-        def openMapsAppViaMoreApps():
+        def openCalendarAppViaMoreApps():
             moreapps.destroy()
-            mapsapp()
+            calendarapp()
 
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
@@ -72,13 +67,13 @@ def Home():
         output_iconweatherapp = Button(moreapps, text="WeatherApp", image=iconweatherapp, command=openWeatherAppViaMoreApps)
         output_iconweatherapp.image = iconweatherapp
         output_iconweatherapp.place(relx=0.60, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="Weather App", font=("Arial", 10)).place(relx=0.53, rely=0.22)
+        Label(moreapps, text="Weather", font=("Arial", 10)).place(relx=0.55, rely=0.22)
 
-        iconmapsapp = PhotoImage(file="UI/Menu/icons/maps-icon2.png")
-        output_iconmapsapp = Button(moreapps, text="MapsApp", image=iconmapsapp, command=openMapsAppViaMoreApps)
-        output_iconmapsapp.image = iconmapsapp
-        output_iconmapsapp.place(relx=0.75, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="MapsApp", font=("Arial", 10)).place(relx=0.70, rely=0.22)
+        iconcalendarapp = PhotoImage(file="UI/Menu/icons/calendar-icon.png")
+        output_iconcalendarapp = Button(moreapps, text="Calendar", image=iconcalendarapp, command=openCalendarAppViaMoreApps)
+        output_iconcalendarapp.image = iconcalendarapp
+        output_iconcalendarapp.place(relx=0.75, rely=0.15, anchor=CENTER)
+        Label(moreapps, text="Calendar", font=("Arial", 10)).place(relx=0.70, rely=0.22)
 
     def Notepad():
         notepad()
