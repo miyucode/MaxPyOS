@@ -12,7 +12,6 @@ def main():
 	os.system('cls')
 
 	Boot.Boot()
-	Login.login()
 
 	username_file = open('System/Ressources/username.txt', 'r')
 	username = username_file.read()
@@ -25,6 +24,7 @@ def main():
 
 	print(f"[{strftime('%H:%M:%S')}]: Your username is \"{username}\" and your password is \"{password}\".")
 
+	Login.login()
 
 if __name__ == '__main__':
 	configure_start_command(main)
