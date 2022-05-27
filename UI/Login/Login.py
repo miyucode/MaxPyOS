@@ -69,7 +69,7 @@ def login():
 	output_iconpassword = Label(Login, image=iconpassword)
 	output_iconpassword.image = iconpassword
 	output_iconpassword.place(relx=0.25, rely=0.35, anchor=CENTER)
-	passwordinput = Entry(Login, text="password here.", font=("Arial", 15))
+	passwordinput = Entry(Login, text="password here.", font=("Arial", 15), show="*")
 	passwordinput.place(relx=0.50, rely=0.35, anchor=CENTER)
 
 	ConnectButton = Button(Login, text="Login", command=ConnectionToAccount, width=30) 
