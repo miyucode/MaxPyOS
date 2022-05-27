@@ -1,4 +1,1 @@
-sys
-tkinter
-time
 pygame
