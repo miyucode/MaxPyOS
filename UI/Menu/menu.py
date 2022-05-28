@@ -13,9 +13,15 @@ from Apps.CalendarApp.app import calendarapp
 from tkinter import *
 from tkinter.ttk import *
 
+from platform import *
+
 from time import strftime
 
 import tkinter.messagebox as mb
+
+import platform
+
+import datetime
 
 def Home():
     def MoreApps():
@@ -67,7 +73,7 @@ def Home():
         output_iconweatherapp = Button(moreapps, text="WeatherApp", image=iconweatherapp, command=openWeatherAppViaMoreApps)
         output_iconweatherapp.image = iconweatherapp
         output_iconweatherapp.place(relx=0.60, rely=0.15, anchor=CENTER)
-        Label(moreapps, text="Weather", font=("Arial", 10)).place(relx=0.55, rely=0.22)
+        Label(moreapps, text="Weather", font=("Arial", 10)).place(relx=0.56, rely=0.22)
 
         iconcalendarapp = PhotoImage(file="UI/Menu/icons/calendar-icon.png")
         output_iconcalendarapp = Button(moreapps, text="Calendar", image=iconcalendarapp, command=openCalendarAppViaMoreApps)
@@ -407,3 +413,20 @@ def Home():
     output_iconmenucircled = Button(home, text="Settings",image=iconmenucircled, command=MoreApps)
     output_iconmenucircled.image = iconmenucircled
     output_iconmenucircled.place(relx=0.50, rely=0.90, anchor=CENTER)
+
+    current_day = datetime.date.today().day
+    current_month = datetime.date.today().month
+    current_year = datetime.date.today().year
+
+    def time():
+        actual_time=strftime('%H:%M')
+        current_time.config(text=actual_time)
+        current_time.after(1000, time)
+        
+    current_time = Label(home, text=f"", font=("Monospace", 10))
+    current_time.place(relx=0.92, rely=0.92)
+    time()
+
+    Label(home, text=f"{current_day}/{current_month}/{current_year}", font=("Monospace", 10)).place(relx=0.90, rely=0.87)
+
+    home.mainloop()
