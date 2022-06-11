@@ -1,6 +1,7 @@
 from System.Shutdown import Shutdown
 from System.Restart import Restart
 from System.Utilities import RaiseError
+from System.Shell import Shell
 
 from UI.Login import Login
 
@@ -193,9 +194,36 @@ def Home():
         systeminfoframe = Frame(menu1, width=600, height=500)
         systeminfoframe.pack(fill='both', expand=True)
 
+        advencedsettings = Frame(menu1, width=600, height=500)
+        advencedsettings.pack(fill='both', expand=True)
+
         menu1.add(securityframe, text='Security')
         menu1.add(personalisationframe, text='Personalization')
         menu1.add(systeminfoframe, text="System info")
+        menu1.add(advencedsettings, text="Advenced Settings")
+
+        # Advenced Settings
+
+        def confirmation_advencedsettings_event():
+            a = mb.askyesno("MaxPyOS - Settings", "Are you sure to go into Advenced Settings?")
+            if a:
+                shell_button.pack()
+                shell_button.place(relx=0.05, rely=0.05)
+                confirmation_advencedsettings.place(relx=0.05, rely=1.50)
+            else:
+                pass
+
+        def run_shell():
+            settings.destroy()
+            home.deiconify()
+            Shell.shell()
+
+        confirmation_advencedsettings = Button(advencedsettings, text="Click if you are sure to go into Advenced Settings.", command=confirmation_advencedsettings_event)
+        confirmation_advencedsettings.pack()
+        confirmation_advencedsettings.place(relx=0.05, rely=0.05)
+
+        shell_button = Button(advencedsettings, text="Start Shell", command=run_shell)
+        shell_button.pack_forget()
 
         # Security Icon
 
@@ -266,6 +294,12 @@ def Home():
             elif newColor == "Grey":
                 home.config(bg="grey")
                 fileColor.write("Grey")
+            elif newColor == "Blue":
+                home.config(bg="blue")
+                fileColor.write("Blue")
+            elif newColor == "Aqua":
+                home.configure(background='SystemButtonFace')
+                fileColor.write("Aqua")                
             elif newColor == "Default":
                 home.configure(background='SystemButtonFace')
                 fileColor.write("Default")
@@ -276,9 +310,9 @@ def Home():
         fileColor.close()
 
         backgroundVar = StringVar(personalisationframe)
-        backgroundVar.set(f"Default") # default value
+        backgroundVar.set(f"Choose one color") # default value
 
-        colors = ("Red", "Default", "White", "Grey")
+        colors = ("Red", "Choose one color", "Default", "White", "Grey", "Blue", "Aqua")
 
         Label(personalisationframe, text="Color:", font=("Arial", 20)).place(relx=0.46, rely=0.20)
 
@@ -289,7 +323,7 @@ def Home():
 
 
         choiceColor = OptionMenu(personalisationframe, backgroundVar, colors[1], *colors, command=changeColor)
-        choiceColor.place(relx=0.46, rely=0.28)
+        choiceColor.place(relx=0.44, rely=0.29)
 
     def shutdownmaxpyos():
         home.withdraw()
@@ -319,6 +353,8 @@ def Home():
         home.config(bg="grey")
     elif currentColor == "White":
         home.config(bg="white")
+    elif currentColor == "Blue":
+        home.config(bg="blue")
     else:
         pass
 
@@ -373,6 +409,8 @@ def Home():
             menu.config(bg="grey")
         elif currentColor == "White":
             menu.config(bg="white")
+        elif currentColor == "Blue":
+            menu.config(bg="blue")
         else:
             pass
 
