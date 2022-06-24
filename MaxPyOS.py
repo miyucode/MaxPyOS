@@ -1,12 +1,33 @@
-from System.Boot import Boot
-from System.Restart.Restart import configure_start_command
+##################################################
+#												  #
+#					Owner : MiyuCode              #
+# 					                              #
+#                   Contributers :				  #
+#												  #
+#												  #
+###################################################
+try : 
+	from System.Boot import Boot
+	from System.Restart.Restart import configure_start_command
 
-from UI.Login import Login
+	from UI.Login import Login
 
-from sys import platform
-from time import *
+	from sys import platform
+	from time import *
 
-import os
+	import os
+except:
+	import os
+	os.system("pip install tk")
+	from System.Boot import Boot
+	from System.Restart.Restart import configure_start_command
+
+	from UI.Login import Login
+
+	from sys import platform
+	from time import *
+
+	import os
 
 def main():
 	os.system('cls')
