@@ -1,7 +1,7 @@
 from System.Shutdown import Shutdown
 from System.Restart import Restart
 from System.Utilities import RaiseError
-from System.Shell import Shell
+#from System.Shell import Shell
 
 from UI.Login import Login
 
