@@ -1,1 +1,5 @@
 pygame
+datetime
+tkcalendar
+threading
+socket
