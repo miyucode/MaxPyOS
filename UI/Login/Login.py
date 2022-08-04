@@ -59,16 +59,20 @@ def login():
 	iconusername = PhotoImage(file="UI/Login/icons/usericon.png")
 	output_iconusername = Label(Login, image=iconusername)
 	output_iconusername.image = iconusername
-	output_iconusername.place(relx=0.25, rely=0.25, anchor=CENTER)
+	output_iconusername.place(relx=0.16, rely=0.25, anchor=CENTER)
 	usernameinput = Entry(Login, text="Admin", font=("Arial", 15))
-	usernameinput.place(relx=0.50, rely=0.25, anchor=CENTER)
+	usernameinput.place(relx=0.56, rely=0.25, anchor=CENTER)
+
+	Label(Login, text="Username:", font=("Arial", 15)).place(relx=0.20, rely=0.22)
 
 	iconpassword = PhotoImage(file="UI/Login/icons/passwordicon.png")
 	output_iconpassword = Label(Login, image=iconpassword)
 	output_iconpassword.image = iconpassword
-	output_iconpassword.place(relx=0.25, rely=0.35, anchor=CENTER)
+	output_iconpassword.place(relx=0.16, rely=0.35, anchor=CENTER)
 	passwordinput = Entry(Login, text="password here.", font=("Arial", 15), show="*")
-	passwordinput.place(relx=0.50, rely=0.35, anchor=CENTER)
+	passwordinput.place(relx=0.561, rely=0.36, anchor=CENTER)
+
+	Label(Login, text="Password: ", font=("Arial", 15)).place(relx=0.20, rely=0.33)
 
 	ConnectButton = Button(Login, text="Login", command=ConnectionToAccount, width=30) 
 	ConnectButton.place(relx=0.5, rely=0.50, anchor=CENTER)
