@@ -1,12 +1,11 @@
 from UI.Menu.menu import Home
 
+from time import *
+
 from tkinter import *
 from tkinter.ttk import *
-from time import *
-import tkinter.messagebox as mb
-from sys import platform
 
-windows = platform == "win32"
+import tkinter.messagebox as mb
 
 def login():
 	def cancelLogin():
@@ -48,8 +47,7 @@ def login():
 	Login.title("MaxPyOS - Login")
 	Login.geometry("600x400")
 	Login.resizable(False, False)
-	if windows:
-		Login.iconbitmap("UI/Login/icons/login.ico")
+	Login.iconbitmap("UI/Login/icons/login.ico")
 	Login.protocol("WM_DELETE_WINDOW", lambda: cancelLogin())
 
 	iconlogin = PhotoImage(file="UI/Login/icons/login.png")
@@ -73,6 +71,6 @@ def login():
 	passwordinput.place(relx=0.50, rely=0.35, anchor=CENTER)
 
 	ConnectButton = Button(Login, text="Login", command=ConnectionToAccount, width=30) 
-	ConnectButton.place(relx=0.5, rely=0.65, anchor=CENTER)
+	ConnectButton.place(relx=0.5, rely=0.50, anchor=CENTER)
 
 	Login.mainloop()
