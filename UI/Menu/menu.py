@@ -18,9 +18,13 @@ from platform import *
 
 from time import strftime
 
+from datetime import datetime
+
 import tkinter.messagebox as mb
 
 import platform
+import psutil
+
 
 import datetime
 
@@ -194,36 +198,36 @@ def Home():
         systeminfoframe = Frame(menu1, width=600, height=500)
         systeminfoframe.pack(fill='both', expand=True)
 
-        advencedsettings = Frame(menu1, width=600, height=500)
-        advencedsettings.pack(fill='both', expand=True)
+        # advencedsettings = Frame(menu1, width=600, height=500)
+        # advencedsettings.pack(fill='both', expand=True)
 
         menu1.add(securityframe, text='Security')
         menu1.add(personalisationframe, text='Personalization')
         menu1.add(systeminfoframe, text="System info")
-        menu1.add(advencedsettings, text="Advenced Settings")
+        # menu1.add(advencedsettings, text="Advenced Settings")
 
         # Advenced Settings
 
-        def confirmation_advencedsettings_event():
-            a = mb.askyesno("MaxPyOS - Settings", "Are you sure to go into Advenced Settings?")
-            if a:
-                shell_button.pack()
-                shell_button.place(relx=0.05, rely=0.05)
-                confirmation_advencedsettings.place(relx=0.05, rely=1.50)
-            else:
-                pass
+        # def confirmation_advencedsettings_event():
+        #     a = mb.askyesno("MaxPyOS - Settings", "Are you sure to go into Advenced Settings?")
+        #     if a:
+        #         shell_button.pack()
+        #         shell_button.place(relx=0.05, rely=0.05)
+        #         confirmation_advencedsettings.place(relx=0.05, rely=1.50)
+        #     else:
+        #         pass
 
-        def run_shell():
-            settings.destroy()
-            home.deiconify()
-            Shell.shell()
+        # def run_shell():
+        #     settings.destroy()
+        #     home.deiconify()
+        #     Shell.shell()
 
-        confirmation_advencedsettings = Button(advencedsettings, text="Click if you are sure to go into Advenced Settings.", command=confirmation_advencedsettings_event)
-        confirmation_advencedsettings.pack()
-        confirmation_advencedsettings.place(relx=0.05, rely=0.05)
+        # confirmation_advencedsettings = Button(advencedsettings, text="Click if you are sure to go into Advenced Settings.", command=confirmation_advencedsettings_event)
+        # confirmation_advencedsettings.pack()
+        # confirmation_advencedsettings.place(relx=0.05, rely=0.05)
 
-        shell_button = Button(advencedsettings, text="Start Shell", command=run_shell)
-        shell_button.pack_forget()
+        # shell_button = Button(advencedsettings, text="Start Shell", command=run_shell)
+        # shell_button.pack_forget()
 
         # Security Icon
 
@@ -259,8 +263,8 @@ def Home():
         iconbackground = PhotoImage(file="UI/Menu/icons/background-icon.png")
         output_iconbackground = Label(personalisationframe, image=iconbackground)
         output_iconbackground.image = iconbackground
-        output_iconbackground.place(relx=0.08, rely=0.09, anchor=CENTER)
-        Label(personalisationframe, text="Personalization", font=("Arial", 20)).place(relx=0.14, rely=0.06)
+        output_iconbackground.place(relx=0.05, rely=0.05, anchor=CENTER)
+        Label(personalisationframe, text="Personalization", font=("Arial", 20)).place(relx=0.10, rely=0.02)
 
         # System info
 
@@ -268,9 +272,9 @@ def Home():
         output_iconsystem = Label(systeminfoframe, image=iconsystem)
         output_iconsystem.image = iconsystem
         output_iconsystem.place(relx=0.05, rely=0.05, anchor=CENTER)
-        Label(systeminfoframe, text="System info", font=("Arial", 20)).place(relx=0.10, rely=0.02)
+        Label(systeminfoframe, text="System Info", font=("Arial", 20)).place(relx=0.10, rely=0.02)
 
-        current_system = platform.system()
+        current_system = platform.platform()
 
         username_file = open('System/Ressources/username.txt')
         current_username = username_file.read()
@@ -281,6 +285,25 @@ def Home():
         current_systemtype = platform.machine()
 
         Label(systeminfoframe, text=f"- System: {current_system}\n- Username: {current_username}\n- Processor: {current_processor}\n- System type: {current_systemtype}", font=("Arial", 12)).place(relx=0.15, rely=0.12)
+
+        iconprocessor = PhotoImage(file="UI/Menu/icons/processor-icon.png")
+        output_iconprocessor = Label(systeminfoframe, image=iconprocessor)
+        output_iconprocessor.image = iconprocessor
+        output_iconprocessor.place(relx=0.05, rely=0.32, anchor=CENTER)
+        Label(systeminfoframe, text="Processor Info", font=("Arial", 20)).place(relx=0.10, rely=0.29)
+
+        cpufreq = psutil.cpu_freq()
+
+        Label(systeminfoframe, text=f"- Physical cores: {psutil.cpu_count(logical=False)}\n- Total Cores: {psutil.cpu_count(logical=True)}\n- Frequency: {psutil.cpu_freq()}\n- Max Frequency: {cpufreq.max:.2f}Mhz\n- Min Frequency: {cpufreq.min:.2f}Mhz", font=("Arial", 12)).place(relx=0.15, rely=0.37)
+
+        def update_cpuusage():
+            current_cpuusage = psutil.cpu_percent()
+            cpuusage.config(text=f"- Total CPU Usage: {current_cpuusage}%")
+            cpuusage.after(1000, update_cpuusage)
+
+        cpuusage = Label(systeminfoframe, text=f"- Total CPU Usage: {psutil.cpu_percent()}%", font=("Arial", 12))
+        cpuusage.place(relx=0.15, rely=0.53)
+        update_cpuusage()
 
         def changeColor(*args):
             fileColor = open("System/Ressources/background.txt", 'w')
@@ -314,16 +337,16 @@ def Home():
 
         colors = ("Red", "Choose one color", "Default", "White", "Grey", "Blue", "Aqua")
 
-        Label(personalisationframe, text="Color:", font=("Arial", 20)).place(relx=0.46, rely=0.20)
+        Label(personalisationframe, text="Color:", font=("Arial", 20)).place(relx=0.46, rely=0.17)
 
         iconcolor = PhotoImage(file="UI/Menu/icons/color-icon.png")
         output_iconcolor = Label(personalisationframe, image=iconcolor)
         output_iconcolor.image = iconcolor
-        output_iconcolor.place(relx=0.412, rely=0.24, anchor=CENTER)
+        output_iconcolor.place(relx=0.412, rely=0.21, anchor=CENTER)
 
 
         choiceColor = OptionMenu(personalisationframe, backgroundVar, colors[1], *colors, command=changeColor)
-        choiceColor.place(relx=0.44, rely=0.29)
+        choiceColor.place(relx=0.44, rely=0.24)
 
     def shutdownmaxpyos():
         home.withdraw()
