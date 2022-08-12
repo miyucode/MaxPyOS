@@ -204,30 +204,6 @@ def Home():
         menu1.add(securityframe, text='Security')
         menu1.add(personalisationframe, text='Personalization')
         menu1.add(systeminfoframe, text="System info")
-        # menu1.add(advencedsettings, text="Advenced Settings")
-
-        # Advenced Settings
-
-        # def confirmation_advencedsettings_event():
-        #     a = mb.askyesno("MaxPyOS - Settings", "Are you sure to go into Advenced Settings?")
-        #     if a:
-        #         shell_button.pack()
-        #         shell_button.place(relx=0.05, rely=0.05)
-        #         confirmation_advencedsettings.place(relx=0.05, rely=1.50)
-        #     else:
-        #         pass
-
-        # def run_shell():
-        #     settings.destroy()
-        #     home.deiconify()
-        #     Shell.shell()
-
-        # confirmation_advencedsettings = Button(advencedsettings, text="Click if you are sure to go into Advenced Settings.", command=confirmation_advencedsettings_event)
-        # confirmation_advencedsettings.pack()
-        # confirmation_advencedsettings.place(relx=0.05, rely=0.05)
-
-        # shell_button = Button(advencedsettings, text="Start Shell", command=run_shell)
-        # shell_button.pack_forget()
 
         # Security Icon
 
