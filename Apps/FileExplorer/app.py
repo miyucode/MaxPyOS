@@ -3,6 +3,9 @@ from UI.Menu import menu
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 
+from tkinter.ttk import *
+from tkinter import ttk
+
 from Apps.Notepad.app import notepad, openFile
 
 import tkinter.filedialog as fd
@@ -172,6 +175,52 @@ def fileexplorer():
 			else:
 				os.startfile(os.path.abspath(file))
 
+	def new_file():
+		def close_new_file():
+			newfile.destroy()
+			app.deiconify()
+
+		def create_new_file():
+			newfile_name = newfile_name_input.get()
+			newfile.destroy()
+			if newfile_name == "":
+				mb.showerror("Error!","We're not able to create this file !")
+			else:
+				# extension = newfile_name.split(".")
+				# print(extension[1])
+				file = open(f'System/Users/User/Desktop/' + newfile_name, 'w')
+				file.write("File created with MaxPyOS.")
+				file.close()
+				mb.showinfo("MaxPyOS - File Explorer","File has been created with success !")
+				app.deiconify()
+				i = 0
+				files = os.listdir("System/Users/User/Desktop/")
+				listbox = Listbox(app, selectbackground='SteelBlue', font=("Arial", 10))
+				listbox.place(relx=0, rely=0, relheight=1, relwidth=1)
+				scrollbar = Scrollbar(listbox, orient=VERTICAL, command=listbox.yview)
+				scrollbar.pack(side=RIGHT, fill=Y)
+				listbox.config(yscrollcommand=scrollbar.set)
+				while i < len(files):
+					listbox.insert(END, files[i])
+					i += 1
+
+		app.withdraw()
+		newfile = Toplevel()
+		newfile.geometry("400x400")
+		newfile.resizable(False, False)
+		newfile.iconbitmap("Apps/FileExplorer/icons/fileexplorer-icon.ico")
+		newfile.protocol("WM_DELETE_WINDOW", lambda: close_new_file())
+
+		Label(newfile, text="Enter file's name:", font=("Arial", 10)).pack()
+
+		newfile_name_input = Entry(newfile, text="new file name", font=("Arial", 15))
+		newfile_name_input.pack()
+
+		newfile_name_input.delete(0, END)		
+		newfile_name_input.insert(0, "New file.txt")
+
+		Button(newfile, text="Create new file", command=create_new_file).pack()
+
 	def list_files_in_folder():
 		i = 0
 		files = os.listdir("System/Users/User/Desktop/")
@@ -190,12 +239,13 @@ def fileexplorer():
 
 	file = Menu(menubar, tearoff=0)
 	file.add_command(label="Open a file", command=open_file)
+	file.add_command(label="New file", command=new_file)
 	file.add_command(label="Delete a file", command=delete_file)
 	file.add_command(label="Copy a file", command=copy_file)
 	file.add_separator()
 	file.add_command(label="Delete a folder", command=delete_folder)
 	file.add_separator()
-	file.add_command(label="Update", command=updatelist)
+	file.add_command(label="Refresh", command=updatelist)
 
 	menubar.add_cascade(label="File", menu=file)
 
