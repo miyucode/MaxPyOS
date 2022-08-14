@@ -56,7 +56,7 @@ def weatherapp():
 				humidity = json_data['main']['humidity']
 				wind = json_data['wind']['speed']
 				final_info = condition + "\n" + str(temp) + "°C"
-				final_data = "\n" + "Minimal temperature: " + str(min_temp) + "°C" + "\n" + "Maximal temperature: " + str(max_temp) + "°C" + "\n" + "Humidity: " + str(humidity) + "\n"
+				final_data = "\n" + "Minimal temperature: " + str(min_temp) + "°C" + "\n" + "Maximal temperature: " + str(max_temp) + "°C" + "\n" + "Humidity: " + str(humidity) + "\n" + "Wind: " + str(wind)
 				
 				readintoweatherconditionfile()
 				
@@ -85,6 +85,8 @@ def weatherapp():
 	namecity.pack(pady=20)
 	namecity.focus()
 	namecity.bind('<Return>', getWeather)
+
+	Button(weatherapp, text="Search", command=getWeather).place(relx=0.40, rely=0.20)
 
 	label1 = Label(weatherapp, font=t)
 	label1.pack()
