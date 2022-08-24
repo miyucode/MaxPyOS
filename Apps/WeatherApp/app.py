@@ -81,12 +81,12 @@ def weatherapp():
 	f = ("poppins", 15, "bold")
 	t = ("poppins", 35, "bold")
 
+	Label(weatherapp, text="Enter a city name:", justify='center', font=("poppins", 20, "bold", "italic")).pack()
+
 	namecity = Entry(weatherapp, justify='center', width=20, font=t)
 	namecity.pack(pady=20)
 	namecity.focus()
 	namecity.bind('<Return>', getWeather)
-
-	Button(weatherapp, text="Search", command=getWeather).place(relx=0.40, rely=0.20)
 
 	label1 = Label(weatherapp, font=t)
 	label1.pack()

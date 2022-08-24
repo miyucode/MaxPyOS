@@ -270,7 +270,7 @@ def Home():
 
         cpufreq = psutil.cpu_freq()
 
-        Label(systeminfoframe, text=f"- Physical cores: {psutil.cpu_count(logical=False)}\n- Total Cores: {psutil.cpu_count(logical=True)}\n- Frequency: {psutil.cpu_freq()}\n- Max Frequency: {cpufreq.max:.2f}Mhz\n- Min Frequency: {cpufreq.min:.2f}Mhz", font=("Arial", 12)).place(relx=0.15, rely=0.37)
+        Label(systeminfoframe, text=f"- Physical cores: {psutil.cpu_count(logical=False)}\n- Total Cores: {psutil.cpu_count(logical=True)}\n- Frequency: Not available\n- Max Frequency: Not available\n- Min Frequency: {cpufreq.min:.2f}Mhz", font=("Arial", 12)).place(relx=0.15, rely=0.37)
 
         def update_cpuusage():
             current_cpuusage = psutil.cpu_percent()
