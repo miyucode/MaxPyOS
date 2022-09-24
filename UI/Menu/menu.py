@@ -281,6 +281,16 @@ def Home():
         cpuusage.place(relx=0.15, rely=0.53)
         update_cpuusage()
 
+        iconcredits = PhotoImage(file="UI/Menu/icons/human_head-icon.png")
+        output_iconcredits = Label(systeminfoframe, image=iconcredits)
+        output_iconcredits.image = iconcredits
+        output_iconcredits.place(relx=0.05, rely=0.65, anchor=CENTER)
+        Label(systeminfoframe, text="Credits", font=("Arial", 20)).place(relx=0.10, rely=0.62)
+
+        Label(systeminfoframe, text="- Creator: Miyu (https://github.com/miyucode)", font=("Arial", 12)).place(relx=0.15, rely=0.69)
+        Label(systeminfoframe, text="- MaxPyOS Creation Date: 15 April 2022", font=("Arial", 12)).place(relx=0.15, rely=0.74)
+        Label(systeminfoframe, text="- Current version: MaxPyOS-1.2 (https://github.com/miyucode/MaxPyOS)", font=("Arial", 12)).place(relx=0.15, rely=0.79)
+
         def changeColor(*args):
             fileColor = open("System/Ressources/background.txt", 'w')
             newColor = backgroundVar.get()
