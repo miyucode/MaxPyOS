@@ -10,6 +10,7 @@ from Apps.WeatherApp.app import weatherapp
 from Apps.FileExplorer.app import fileexplorer
 from Apps.MusicPlayer.app import musicplayer
 from Apps.CalendarApp.app import calendarapp
+from Apps.CovidApp.app import covidapp
 
 from tkinter import *
 from tkinter.ttk import *
@@ -21,6 +22,8 @@ from time import strftime
 from datetime import datetime
 
 import tkinter.messagebox as mb
+
+import requests
 
 import platform
 import psutil
@@ -49,6 +52,10 @@ def Home():
         def openCalendarAppViaMoreApps():
             moreapps.destroy()
             calendarapp()
+
+        def openCovidAppViaMoreApps():
+            moreapps.destroy()
+            covidapp()
 
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
@@ -85,6 +92,12 @@ def Home():
         output_iconcalendarapp.image = iconcalendarapp
         output_iconcalendarapp.place(relx=0.75, rely=0.15, anchor=CENTER)
         Label(moreapps, text="Calendar", font=("Arial", 10)).place(relx=0.70, rely=0.22)
+
+        iconcovidapp = PhotoImage(file="UI/Menu/icons/coronavirus-icon.png")
+        output_iconcovidapp = Button(moreapps, text="CovidApp", image=iconcovidapp, command=openCovidAppViaMoreApps)
+        output_iconcovidapp.image = iconcovidapp
+        output_iconcovidapp.place(relx=0.15, rely=0.35, anchor=CENTER)
+        Label(moreapps, text="CovidApp", font=("Arial", 10)).place(relx=0.10, rely=0.42)
 
     def Notepad():
         notepad()
@@ -198,12 +211,13 @@ def Home():
         systeminfoframe = Frame(menu1, width=600, height=500)
         systeminfoframe.pack(fill='both', expand=True)
 
-        # advencedsettings = Frame(menu1, width=600, height=500)
-        # advencedsettings.pack(fill='both', expand=True)
+        wifiinfoframe = Frame(menu1, width=600, height=500)
+        wifiinfoframe.pack(fill='both', expand=True)
 
         menu1.add(securityframe, text='Security')
         menu1.add(personalisationframe, text='Personalization')
         menu1.add(systeminfoframe, text="System info")
+        menu1.add(wifiinfoframe, text="Internet")
 
         # Security Icon
 
@@ -290,6 +304,31 @@ def Home():
         Label(systeminfoframe, text="- Creator: Miyu (https://github.com/miyucode)", font=("Arial", 12)).place(relx=0.15, rely=0.69)
         Label(systeminfoframe, text="- MaxPyOS Creation Date: 15 April 2022", font=("Arial", 12)).place(relx=0.15, rely=0.74)
         Label(systeminfoframe, text="- Current version: MaxPyOS-1.2 (https://github.com/miyucode/MaxPyOS)", font=("Arial", 12)).place(relx=0.15, rely=0.79)
+
+        # Wi-Fi Info & All
+
+        iconwifi = PhotoImage(file="UI/Menu/icons/wifi-icon.png")
+        output_iconwifi = Label(wifiinfoframe, image=iconwifi)
+        output_iconwifi.image = iconwifi
+        output_iconwifi.place(relx=0.05, rely=0.05, anchor=CENTER)
+        Label(wifiinfoframe, text="Wi-Fi", font=("Arial", 20)).place(relx=0.10, rely=0.02)
+
+        timeout = 1
+        try:
+            requests.head("http://www.google.com/", timeout=timeout)
+            iconwifiactive = PhotoImage(file="UI/Menu/icons/wifi-yes.png")
+            output_wifiactive = Label(wifiinfoframe, image=iconwifiactive)
+            output_wifiactive.image = iconwifiactive
+            output_wifiactive.place(relx=0.05, rely=0.25, anchor=CENTER)
+            wifi_state = Label(wifiinfoframe, text="The internet connection is active.", font=("Arial", 12))
+            wifi_state.place(relx=0.10, rely=0.24)
+        except requests.ConnectionError:
+            iconwifinotactive = PhotoImage(file="UI/Menu/icons/wifi-no.png")
+            output_wifinotactive = Label(wifiinfoframe, image=iconwifinotactive)
+            output_wifinotactive.image = iconwifinotactive
+            output_wifinotactive.place(relx=0.05, rely=0.25, anchor=CENTER)
+            wifi_state = Label(wifiinfoframe, text="The internet connection is down.", font=("Arial", 12))
+            wifi_state.place(relx=0.10, rely=0.24)
 
         def changeColor(*args):
             fileColor = open("System/Ressources/background.txt", 'w')
