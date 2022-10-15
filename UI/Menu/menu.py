@@ -10,7 +10,7 @@ from Apps.WeatherApp.app import weatherapp
 from Apps.FileExplorer.app import fileexplorer
 from Apps.MusicPlayer.app import musicplayer
 from Apps.CalendarApp.app import calendarapp
-from Apps.CovidApp.app import covidapp
+from Apps.MaxWeb.app import maxweb
 
 from tkinter import *
 from tkinter.ttk import *
@@ -53,9 +53,9 @@ def Home():
             moreapps.destroy()
             calendarapp()
 
-        def openCovidAppViaMoreApps():
+        def openMaxWebViaMoreApps():
             moreapps.destroy()
-            covidapp()
+            maxweb()
 
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
@@ -93,11 +93,11 @@ def Home():
         output_iconcalendarapp.place(relx=0.75, rely=0.15, anchor=CENTER)
         Label(moreapps, text="Calendar", font=("Arial", 10)).place(relx=0.70, rely=0.22)
 
-        iconcovidapp = PhotoImage(file="UI/Menu/icons/coronavirus-icon.png")
-        output_iconcovidapp = Button(moreapps, text="CovidApp", image=iconcovidapp, command=openCovidAppViaMoreApps)
-        output_iconcovidapp.image = iconcovidapp
-        output_iconcovidapp.place(relx=0.15, rely=0.35, anchor=CENTER)
-        Label(moreapps, text="CovidApp", font=("Arial", 10)).place(relx=0.10, rely=0.42)
+        iconmaxweb = PhotoImage(file="UI/Menu/icons/maxweb-icon.png")
+        output_iconmaxweb = Button(moreapps, text="MaxWeb", image=iconmaxweb, command=openMaxWebViaMoreApps)
+        output_iconmaxweb.image = iconmaxweb
+        output_iconmaxweb.place(relx=0.15, rely=0.35, anchor=CENTER)
+        Label(moreapps, text="MaxWeb", font=("Arial", 10)).place(relx=0.10, rely=0.42)
 
     def Notepad():
         notepad()
