@@ -57,6 +57,10 @@ def Home():
             moreapps.destroy()
             maxweb()
 
+        def openMusicPlayerViaMoreApps():
+            moreapps.destroy()
+            musicplayer()
+
         moreapps = Toplevel()
         moreapps.title("MaxPyOS - Apps")
         moreapps.geometry("600x500")
@@ -98,6 +102,12 @@ def Home():
         output_iconmaxweb.image = iconmaxweb
         output_iconmaxweb.place(relx=0.15, rely=0.35, anchor=CENTER)
         Label(moreapps, text="MaxWeb", font=("Arial", 10)).place(relx=0.10, rely=0.42)
+
+        iconmusicplayer = PhotoImage(file="UI/Menu/icons/music-icon.png")
+        output_iconmusicplayer = Button(moreapps, text="Music Player", image=iconmusicplayer, command=openMusicPlayerViaMoreApps)
+        output_iconmusicplayer.image = iconmusicplayer
+        output_iconmusicplayer.place(relx=0.30, rely=0.35, anchor=CENTER)
+        Label(moreapps, text="MusicPlayer", font=("Arial", 10)).place(relx=0.24, rely=0.42)
 
     def Notepad():
         notepad()
