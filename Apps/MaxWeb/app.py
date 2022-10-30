@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinterweb import HtmlFrame
+from tkinterweb import *
 from tkinter.ttk import *
 
 import tkinter.messagebox as mb
@@ -16,6 +16,8 @@ def maxweb():
     frame.load_website("duckduckgo.com")
     frame.pack(fill="both", expand=True)
 
+    current_url = "https://duckduckgo.go"
+
     def searchurl():
         url = url_entry.get()
         frame.load_website(url)
@@ -25,9 +27,10 @@ def maxweb():
 
     def url_changed(title):
         tabname.config(text=title)
+        app.title(f"MaxWeb - {title}")
         
     frame.on_url_change(url_changed)
-    frame.set_broken_webpage_message("<h1><br><br>Oops, we can't reach this URL, retry. :)</h1>")
+    frame.set_broken_webpage_message("<h1>Oops, we can't reach this URL, retry. :)</h1><hr><b>Error 404")
 
     url_entry = Entry(app)
     url_entry.place(relx=0.01, rely=0.01)
